@@ -1,0 +1,38 @@
+﻿.rgview table {
+    border-collapse: collapse;
+    background: #ebf1de;
+    width: 100%;
+}
+
+.rgview th, .rgview td {
+    padding: 4px 8px;
+}
+
+.rgview th {
+    background-color: #8064a2;
+    color: #fff;
+    border: 1px solid #ccc;
+    font-family: tahoma;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+    .rgview th a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.rgview tr:hover {
+    background: #d8e4bc;
+}
+
+.rgview td {
+    border: 1px solid #ccc;
+}
+
+.showTitlePanel {
+    background-color: royalblue;
+    font-family: tahoma;
+    font-size: 12px;
+}

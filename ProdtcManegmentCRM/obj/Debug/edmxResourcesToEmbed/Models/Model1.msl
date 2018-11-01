@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ManegmentProductCRMModelStoreContainer" CdmEntityContainer="ManegmentProductCRMEntities">
+    <EntitySetMapping Name="Tbl_Product">
+      <EntityTypeMapping TypeName="ManegmentProductCRMModel.Tbl_Product">
+        <MappingFragment StoreEntitySet="Tbl_Product">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Role">
+      <EntityTypeMapping TypeName="ManegmentProductCRMModel.Tbl_Role">
+        <MappingFragment StoreEntitySet="Tbl_Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleTitle" ColumnName="RoleTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_User">
+      <EntityTypeMapping TypeName="ManegmentProductCRMModel.Tbl_User">
+        <MappingFragment StoreEntitySet="Tbl_User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Ticket">
+      <EntityTypeMapping TypeName="ManegmentProductCRMModel.Tbl_Ticket">
+        <MappingFragment StoreEntitySet="Tbl_Ticket">
+          <ScalarProperty Name="ReplayMassge" ColumnName="ReplayMassge" />
+          <ScalarProperty Name="Pigiri" ColumnName="Pigiri" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Messge" ColumnName="Messge" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

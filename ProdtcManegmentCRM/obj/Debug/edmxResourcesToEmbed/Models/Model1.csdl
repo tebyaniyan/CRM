@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ManegmentProductCRMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tbl_Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Company" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tbl_Ticket" Relationship="ManegmentProductCRMModel.FK_Tbl_Massge_Tbl_Product" FromRole="Tbl_Product" ToRole="Tbl_Ticket" />
+  </EntityType>
+  <EntityType Name="Tbl_Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_User_Tbl_Role" FromRole="Tbl_Role" ToRole="Tbl_User" />
+  </EntityType>
+  <EntityType Name="Tbl_User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Tbl_Role" Relationship="Self.FK_Tbl_User_Tbl_Role" FromRole="Tbl_User" ToRole="Tbl_Role" />
+    <NavigationProperty Name="Tbl_Ticket" Relationship="ManegmentProductCRMModel.FK_Tbl_Massge_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_Ticket" />
+  </EntityType>
+  <Association Name="FK_Tbl_User_Tbl_Role">
+    <End Role="Tbl_Role" Type="Self.Tbl_Role" Multiplicity="1" />
+    <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Tbl_User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ManegmentProductCRMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" />
+    <EntitySet Name="Tbl_Role" EntityType="Self.Tbl_Role" />
+    <EntitySet Name="Tbl_User" EntityType="Self.Tbl_User" />
+    <AssociationSet Name="FK_Tbl_User_Tbl_Role" Association="Self.FK_Tbl_User_Tbl_Role">
+      <End Role="Tbl_Role" EntitySet="Tbl_Role" />
+      <End Role="Tbl_User" EntitySet="Tbl_User" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_Ticket" EntityType="ManegmentProductCRMModel.Tbl_Ticket" />
+    <AssociationSet Name="FK_Tbl_Massge_Tbl_Product" Association="ManegmentProductCRMModel.FK_Tbl_Massge_Tbl_Product">
+      <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+      <End Role="Tbl_Ticket" EntitySet="Tbl_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Massge_Tbl_User" Association="ManegmentProductCRMModel.FK_Tbl_Massge_Tbl_User">
+      <End Role="Tbl_User" EntitySet="Tbl_User" />
+      <End Role="Tbl_Ticket" EntitySet="Tbl_Ticket" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Tbl_Ticket">
+    <Key>
+      <PropertyRef Name="TicketId" />
+    </Key>
+    <Property Name="TicketId" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Messge" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Pigiri" Type="Int32" Nullable="false" />
+    <Property Name="ReplayMassge" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tbl_Product" Relationship="ManegmentProductCRMModel.FK_Tbl_Massge_Tbl_Product" FromRole="Tbl_Ticket" ToRole="Tbl_Product" />
+    <NavigationProperty Name="Tbl_User" Relationship="ManegmentProductCRMModel.FK_Tbl_Massge_Tbl_User" FromRole="Tbl_Ticket" ToRole="Tbl_User" />
+  </EntityType>
+  <Association Name="FK_Tbl_Massge_Tbl_Product">
+    <End Type="ManegmentProductCRMModel.Tbl_Product" Role="Tbl_Product" Multiplicity="1" />
+    <End Type="ManegmentProductCRMModel.Tbl_Ticket" Role="Tbl_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Tbl_Ticket">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Massge_Tbl_User">
+    <End Type="ManegmentProductCRMModel.Tbl_User" Role="Tbl_User" Multiplicity="1" />
+    <End Type="ManegmentProductCRMModel.Tbl_Ticket" Role="Tbl_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Tbl_Ticket">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
